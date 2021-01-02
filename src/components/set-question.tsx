@@ -14,17 +14,17 @@ export const SetQuestion = observer(({ service }: IProp) => {
     if (!current) {
         return <div>loading...</div>
     }
-    const check = useCallback(() => {
+    const check = () => {
         current.check();
         if (current.collect) {
             service.next();
         }
-    }, [current, service]);
-    
+    };
+
     return (
         <div>
             <div>{current.Japanese}</div>
-            <div>{current.hint.map((hint,index) => <span key={index} style={{ visibility: hint.visible ? 'visible' : 'hidden' }} >{hint.word} </span>)}</div>
+            <div>{current.hint.map((hint, index) => <span key={index} style={{ visibility: hint.visible ? 'visible' : 'hidden' }} >{hint.word} </span>)}</div>
             <div>
                 <TextField
                     value={current.input}
@@ -34,11 +34,11 @@ export const SetQuestion = observer(({ service }: IProp) => {
                             return false;
                         }
                         check();
-                    } }
+                    }}
                 />
             </div>
             <DefaultButton
-                onClick={()=>check()}>Check</DefaultButton>
+                onClick={() => check()}>Check</DefaultButton>
         </div>
     );
 })
