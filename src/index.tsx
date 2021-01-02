@@ -3,10 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createTheme, loadTheme, registerIcons } from '@fluentui/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { BrowserRouter} from 'react-router-dom';
+import firebase from 'firebase';
 
+loadTheme(createTheme({
+  defaultFontStyle: { fontFamily: 'Noto Sans JP' }
+}));
+
+registerIcons({
+  icons: {
+    Filter: <FontAwesomeIcon icon={faFilter} />
+  }
+});
+
+const config = {
+  apiKey: 'AIzaSyA9DIRZ35ZC6p1LjwNvbdcwCNrJmH2H7t0',
+  authDomain: 'sentence-challenge.firebaseapp.com',
+  projectId: 'sentence-challenge'
+};
+firebase.initializeApp(config);
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
