@@ -52,9 +52,10 @@ function App() {
 
   }, [user])
   useEffect(() => {
-    (async () => {
-        await service?.load()
-    })()
+    const f = async () => {
+      await service?.load()
+    };
+    f()
   }, [user, service])
 
   if (!service || !user) {

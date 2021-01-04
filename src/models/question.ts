@@ -88,7 +88,7 @@ export class QuestionService {
         const questions: Question[] = []
         data.forEach(q => {
             const d = q.data();
-            questions.push(new Question(d.Id, d.English, d.Japanese, d.LastCollectAnswerd));
+            questions.push(new Question(d.Id, d.English, d.Japanese, d.LastCollectAnswerd.toDate()));
         });
         this.questions = questions;
         this.currentQuestion = new CurrentQuestion(this.getNextQuestion());

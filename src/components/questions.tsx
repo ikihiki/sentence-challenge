@@ -67,7 +67,7 @@ const ItemColumn = observer(({ service, item, index, column }: { service: Questi
             />;
         case 'LastCollectAnswerd':
             return (
-                <span> {item?.LastCollectAnswerd}</span>
+                <span> {item?.LastCollectAnswerd?.toDateString()}</span>
             );
         default:
             return <span>?</span>;
